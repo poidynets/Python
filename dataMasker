@@ -1,14 +1,10 @@
-import pandas as pd
-import os
-import sys
 import re
-import os 
 import csv
 
 def main():
     result = []
-    inputFile='nca_tst.psv'
-    outputFile='nca_tst_masked.psv'
+    inputFile='input.psv'
+    outputFile='masked_output.psv'
 
     with open(inputFile) as inFile :
         reader = csv.reader(inFile, delimiter='|')
