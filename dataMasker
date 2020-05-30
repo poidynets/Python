@@ -3,14 +3,17 @@ import csv
 
 def main():
     result = []
-    inputFile='input.psv'
-    outputFile='masked_output.psv'
-
+    generic='dataFile'
+    inputFile=generic+'.psv'
+    outputFile=generic+'_masked.psv'
+    
     with open(inputFile) as inFile :
         reader = csv.reader(inFile, delimiter='|')
         for row in reader:
             data = row
             data[5] = re.sub('[0-9a-zA-Z]', 'A', data[5])
+            data[7] = re.sub('[0-9a-zA-Z]', 'B', data[7])
+            data[13] = re.sub('[0-9a-zA-Z]', 'C', data[13])
             result.append(data)
     inFile.close()
     with open(outputFile, 'w', newline='') as outFile:
