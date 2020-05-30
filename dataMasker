@@ -1,0 +1,25 @@
+import pandas as pd
+import os
+import sys
+import re
+import os 
+import csv
+
+def main():
+    result = []
+    inputFile='nca_tst.psv'
+    outputFile='nca_tst_masked.psv'
+
+    with open(inputFile) as inFile :
+        reader = csv.reader(inFile, delimiter='|')
+        for row in reader:
+            data = row
+            data[5] = re.sub('[0-9a-zA-Z]', 'A', data[5])
+            result.append(data)
+    inFile.close()
+    with open(outputFile, 'w', newline='') as outFile:
+        writer = csv.writer(outFile, delimiter='|')
+        writer.writerows(result)
+    outFile.close()
+if __name__ == "__main__":
+    main()
