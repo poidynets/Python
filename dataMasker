@@ -1,5 +1,8 @@
 import re
 import csv
+import random
+import string
+
 
 def main():
     result = []
@@ -11,9 +14,9 @@ def main():
         reader = csv.reader(inFile, delimiter='|')
         for row in reader:
             data = row
-            data[5] = re.sub('[0-9a-zA-Z]', 'A', data[5])
-            data[7] = re.sub('[0-9a-zA-Z]', 'B', data[7])
-            data[13] = re.sub('[0-9a-zA-Z]', 'C', data[13])
+            data[5] = re.sub('[0-9a-zA-Z]', random.choice(string.ascii_uppercase), data[5])
+            data[7] = re.sub('[0-9a-zA-Z]', random.choice(string.ascii_uppercase), data[7])
+            data[13] = re.sub('[0-9a-zA-Z]', random.choice(string.ascii_uppercase), data[13])
             result.append(data)
     inFile.close()
     with open(outputFile, 'w', newline='') as outFile:
